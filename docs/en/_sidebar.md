@@ -4,6 +4,7 @@
   - [Download](introduction/download.md)
   - [Screenshots](Screenshots.md)
   - [Release Log](ReleaseLog.md)
+  - [Roadmap](introduction/roadmap.md)
   - [Support us](Support_us.md)
   - [Privacy Terms & Policy](introduction/privacy-terms.md)
 - Getting Started
@@ -14,6 +15,9 @@
 
 - Features
   - [APIs](guide/api.md)
+    - [LifeUp Cloud☁️](guide/api_cloud.md)
+    - [LifeUp Desktop🖥](guide/api_desktop.md)
   
 - What's new
+  - [v1.91.0: New Widgets, Custom Level, 🖥 ](feature/191.md)
   - [v1.89.x: Multiple Unlock Condition](feature/189.md)

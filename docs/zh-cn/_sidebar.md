@@ -4,10 +4,11 @@
   - [截图展示](introduction/screenshots.md)
   - [更新日志](introduction/release_log.md)
   - [开发计划](introduction/development_plan.md)
+  - [开发工效](introduction/ergonomics.md)
   - [隐私协议](introduction/privacy-trems.md)
   - [建设人升](introduction/support_us.md)
   - [捐赠明细](introduction/donation.md)
-- 用户指引
+- 指引
 
   - [快速开始](guide/hello_lifeup.md)
   - [常见问题](guide/faq.md)
@@ -18,11 +19,16 @@
   - [兼容性配置](guide/compatibility.md)
   - [后台运行](guide/background_running.md)
   - [开放接口](guide/api.md)
+    - [☁️ 云人升](guide/api_cloud.md)
+    - [🖥 桌面端](guide/api_desktop.md)
 - 用户分享
 
   - [体系建设参考手册](guide/user/system_01.md)
   - [体系相关视频](guide/user/system_02.md)
-- 更新介绍
+- 更新
+  - [1.90.0 - 开放接口](features/190.md)
+  - [1.89.0 - 多条件成就（其二）](features/189_2.md)
+  - [1.89.0 - 多条件成就（其一）](features/189_1.md)
   - [1.87.0 - 列表优化](features/187.md)
   - [1.86.0 - 成就子分类](features/186.md)
   - [1.80.0 - 开箱](features/180.md)

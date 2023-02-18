@@ -1,14 +1,25 @@
-# 備份
+# 備份與恢復
 
-[在微信公眾號檢視本文（含堅果雲備份的設定影片教程）](https://mp.weixin.qq.com/s?__biz=MzI0OTQ4OTAxMQ==&mid=2247483867&idx=1&sn=d24068b74810d5b91b37c1abda436eca&chksm=e991f2c7dee67bd1ed49e74b3131bf7812c22f2a58a82cdac3c30182665296262a3c86a77b1d&mpshare=1&scene=23&srcid=1205mlIjJmwwyVugMJ7P25jM&sharer_sharetime=1639901809270&sharer_shareid=aefb2cf8bbd4980bf3f827f86feb6b04#rd) 
+- 【在B站檢視：《人升》2分鐘配置堅果雲實現雲備份】 https://www.bilibili.com/video/BV1Yg411i7uM/?share_source=copy_web&vd_source=141b0b80de90aedb6b7f25458fa6b5d1
+
+- 【在B站檢視：《人升》一鍵匯入存檔資料（恢復）】 https://www.bilibili.com/video/BV1xP411u7dV/?share_source=copy_web&vd_source=141b0b80de90aedb6b7f25458fa6b5d1
+
+- [在微信公眾號檢視本文（含堅果雲備份的設定影片教程）](https://mp.weixin.qq.com/s?__biz=MzI0OTQ4OTAxMQ==&mid=2247483867&idx=1&sn=d24068b74810d5b91b37c1abda436eca&chksm=e991f2c7dee67bd1ed49e74b3131bf7812c22f2a58a82cdac3c30182665296262a3c86a77b1d&mpshare=1&scene=23&srcid=1205mlIjJmwwyVugMJ7P25jM&sharer_sharetime=1639901809270&sharer_shareid=aefb2cf8bbd4980bf3f827f86feb6b04#rd) 
 
 ## 一、簡介
 
+### 1.0 是否支援同步？
+
+- ❌ 服務端直接同步資料（`人升`是離線儲存應用）
+- ❌ 增量同步
+- ✔️ 使用自選 WebDAV 雲服務/DropBox/Google Drive 進行雲儲存和同步
+- ✔️ 跨裝置**手動全量**同步
+
 ### 1.1 為什麼需要配置備份？
 
-由於工具類 APP 性質特殊，一般需要支援本地離線使用，所以資料一般是儲存在本地的。
+`人升`屬於基於離線儲存的工具類應用，支援離線使用，並讓你完全掌控資料。**你可以使用任意第三方服務或本地儲存進行備份，我們也支援了通用的 WebDAV 雲盤協議。**
 
-如果不進行備份的話，在解除安裝應用、更換手機的情況下，你可能會丟失所有的本地資料，只保留團隊動態之類的雲端資料。
+這也意味著你需要手動備份資料，不然可能會在解除安裝應用、更換手機、手機損壞之類的情況下丟失你的資料。目前只有團隊、公開動態和會員等資料是雲端儲存的。
 
 **這跟你直接解除安裝微信，也會丟失所有聊天記錄是一致的。**
 
@@ -20,11 +31,13 @@
 
 <br/>
 
+?> 如果你在大陸境內使用的話，只需要花費數十分鐘註冊一個堅果雲賬號，並在 app 內配置，即可**一勞永逸**實現雲端儲存。<br/>如果你擁有海外網路環境，則只需要在 app 內直接授權 Google Drive/Dropbox 即可實現雲端儲存。
+
 《人升》由於種種原因，目前無法實現內建雲同步功能：
 
 - **增量同步屬於技術壁壘**
 
-  我們目前沒有技術，伺服器也沒有足夠的計算和儲存資源來實現增量同步
+  我們目前缺少技術，伺服器也沒有足夠的計算和儲存資源來實現增量同步。
 
 - **全量同步也需要大量的雲端儲存空間資源**
 
@@ -45,6 +58,7 @@
 - WebDAV 備份
 - 直接匯出檔案進行備份（預設路徑和自定義路徑）
 - Dropbox 備份
+- Google Drive 備份
 
 <br />
 
@@ -54,11 +68,15 @@
 
 - 待辦事項內容和歷史記錄
 
-- 商品、金幣等所有記錄
+- 商品、倉庫、金幣等所有記錄
 
 - 成就解鎖記錄、自定義成就
 
 - 感想
+
+- 合成
+
+- 自定義屬性
 
 - 番茄記錄
 
@@ -75,10 +93,11 @@
 | 方法           | 解除安裝 | 手機損壞                                                  | 自動備份 | 備註                                                         |
 | -------------- | ---- | --------------------------------------------------------- | -------- | ------------------------------------------------------------ |
 | 預設路徑備份   | ❌    | ❌                                                         | ❌        | 僅用於非解除安裝情況下的資料恢復                                 |
-| 自定義路徑備份 | ✔️    | ❌（除非手動將檔案導向其他裝置，或者將檔案選擇至遠端路徑） | ❌        | **如果安裝了 Google Drive、堅果雲 app，也可以在這裏實現備份至 Google Drive 或堅果雲，實現手動雲備份** |
-| 自動備份至`下載`資料夾 | ✔️ | ❌ | ✔️ | 僅適用於Android10及以上裝置 |
-| WebDAV 備份     | ✔️    | ✔️                                                         | ✔️        | 需要選擇支援 WebDAV 備份的平臺或者自部署，推薦使用堅果雲       |
-| Dropbox 備份    | ✔️    | ✔️                                                         | ✔️        | 需要一定的網路條件，國內環境可能比較麻煩                     |
+| 自定義路徑備份 | ✔️    | ✔️（若將檔案匯出至外部介質）<br/>❌ （若還是存放在手機中） | ❌        | **如果安裝了 Google Drive、堅果雲 app，也可以在這裏實現備份至 Google Drive 或堅果雲，實現手動雲備份** |
+| 自動備份至`下載`資料夾 | ✔️ | ❌ | ✔️ | 僅適用於 Android10 及以上裝置 |
+| WebDAV 備份     | ✔️    | ✔️                                                         | ✔️        | 需要選擇支援 WebDAV 備份的平臺或者自部署，推薦使用堅果雲<br/>對大檔案上傳效果一般，建議不超過 10MB<br/>支援自部署 |
+| Dropbox 備份    | ✔️    | ✔️                                                         | ✔️        | 需要一定的網路條件（能夠訪問Dropbox） <br/>支援大檔案上傳<br/>支援應用內一鍵授權 |
+| Google Drive 備份 | ✔️ | ✔️ | ✔️ | 需要一定的網路條件（能夠訪問谷歌服務）<br/>支援大檔案上傳<br/>支援應用內一鍵授權 |
 
 <br />
 
@@ -102,11 +121,20 @@
 >
 > 但國內支援 WebDAV 協議的知名網盤目前只有**堅果雲**。
 
+<br/>
+
 ### 2.1 使用方法
 
-#### 2.1.0 影片教程
+#### 2.1.0 影片教程（2分鐘完成堅果雲配置）
 
-> [公眾號裡有影片教程](https://mp.weixin.qq.com/s?__biz=MzI0OTQ4OTAxMQ==&mid=2247483867&idx=1&sn=d24068b74810d5b91b37c1abda436eca&chksm=e991f2c7dee67bd1ed49e74b3131bf7812c22f2a58a82cdac3c30182665296262a3c86a77b1d&mpshare=1&scene=23&srcid=1205mlIjJmwwyVugMJ7P25jM&sharer_sharetime=1639901809270&sharer_shareid=aefb2cf8bbd4980bf3f827f86feb6b04#rd)
+> 首先，需要下載並註冊《堅果雲》app。或者你也可參考下述的網頁版操作指引。<br/>
+> 《堅果雲》app 僅用於註冊和獲取配置資訊，配置後可以保留用作個人網盤或者解除安裝，不影響雲同步功能。
+
+<iframe src="//player.bilibili.com/player.html?aid=517994865&bvid=BV1Yg411i7uM&cid=899709786&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="80%" height="600"> </iframe>
+
+https://www.bilibili.com/video/BV1Yg411i7uM/
+
+歡迎關注 B 站賬號~後續計劃更新更多《人升》相關影片。
 
 #### 2.1.1 獲取 WebDAV 地址、賬號、密碼
 
@@ -116,15 +144,23 @@
 
 ##### 2.2.2 手機版操作
 
-1.  移動端安裝堅果雲 APP（可選：參考下述的電腦版操作，使用瀏覽器執行桌面版操作）。
+1. 移動端安裝堅果雲 APP（可選：參考下述的電腦版操作，使用瀏覽器執行桌面版操作）。
    ![](_media/backup/04.png ': size=50%')
-2.  註冊並登入堅果雲後，在堅果雲的 ` 設定 `-` 第三方應用管理 ` 處，新增應用密碼，應用名稱可輸入 LifeUp。
-    ![](_media/backup/05.png ': size=50%')
-    ![](_media/backup/06.png ': size=50%')
-    ![](_media/backup/07.png ': size=50%')
-3.  新增成功後，你能在該頁面看到 ` 伺服器地址 `、` 賬號 ` 和剛纔新增的應用密碼等資訊。
-    ![](_media/backup/08.png ': size=50%')
-4.  接下來的步驟參考下文**2.2.4 應用配置**。
+
+2. 註冊並登入堅果雲後，在堅果雲的 ` 設定 `-` 第三方應用管理 ` 處，新增應用密碼，應用名稱可輸入 LifeUp。
+   ![](_media/backup/05.png ': size=50%')
+
+	<br/>
+
+   ![](_media/backup/06.png ': size=50%')
+	<br/>
+
+   ![](_media/backup/07.png ': size=50%')
+
+3. 新增成功後，你能在該頁面看到 ` 伺服器地址 `、` 賬號 ` 和剛纔新增的應用密碼等資訊。
+   ![](_media/backup/08.png ': size=50%')
+
+4. 接下來的步驟參考下文**2.2.4 應用配置**。
 
 ##### 2.2.3 電腦版操作
 
@@ -155,11 +191,11 @@
 - 如果你的備份檔案體積已經大於 10MB，那麼請根據實際情況考慮 ` 忽略媒體檔案 ` 或者調整 ` 自動備份間隔 `。
 - **如果備份檔案過大，可能導致上傳失敗。**這時候也可以嘗試開啟 ` 忽略媒體檔案 `。並且可以嘗試另行備份媒體檔案，不然即便成功也算消耗大量流量。甚至導致堅果雲那邊流量超額，無法上傳。
 
----
+<br/>
 
-## 三、恢復
+## 三、恢復（匯入資料）
 
-![](_media/backup/10.png': size=30%')
+![](_media/backup/10.png ': size=30%')
 
 ### 自定義路徑
 
@@ -176,16 +212,30 @@
 - ` 檔案儲存根目錄/Download（下載）`
 - ` 檔案儲存根目錄/Download（下載）` 下任意子路徑
 
-#### Android 10 及更低版本
+<br/>
+從 QQ/檔案管理器 恢復資料的影片教程：
+
+<!-- tabs:start -->
+
+#### **一鍵從 QQ 或者檔案系統匯入資料（推薦）**
+
+需要《人升》v1.90.6 版本以上。
+
+<iframe src="//player.bilibili.com/player.html?aid=305504686&bvid=BV1xP411u7dV&cid=904969278&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="80%" height="600"> </iframe>
+
+
+#### **Android 10 及更低版本**
 
 <iframe src="//player.bilibili.com/player.html?aid=380415695&bvid=BV1PZ4y1S7ah&cid=479527125&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="80%" height="600"> </iframe>
 
-#### Android 11 及以上
+#### **Android 11 及以上**
 
 <iframe src="//player.bilibili.com/player.html?aid=250882869&bvid=BV1gv411g7ys&cid=419591550&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="80%" height="600"> </iframe>
 
-### WebDAV/DropBox
+<!-- tabs:end -->
 
-這兩種雲同步方式，只需要配置好各自的資訊後，執行對應的恢復方式即可。
+### WebDAV/Dropbox/Google Drive
 
-當然，特殊情況你也可以去對應的平臺下載檔案，手動進行本地恢復。
+- 對於 WebDAV 方式，你只需要按照備份的步驟拿回之前的配置資訊，即可恢復。
+- 對於 Dropbox、Google Drive 備份方式，直接在應用內授權後，即可恢復。
+- 當然，特殊情況你也可以去對應的平臺下載檔案，手動進行本地恢復。

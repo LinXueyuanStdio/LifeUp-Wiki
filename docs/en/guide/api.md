@@ -14,9 +14,10 @@
 
 | Caller | Scenario | Notes |
 | ----------------------------------------- | ------- -------------------------------------------------- --- | -------- |
-|**LifeUp->Other Applications**<br/>Implemented through the "URL" effect of the shop item| **After using the shop item:**<br/>1. Use a browser to visit a webpage<br/>2. Jump to WeChat and scan Scan, or specify a small program<br/>3. Automatically add accounting records ([such as "Qianji" supports accounting interface](http://docs.qianjiapp.com/plugin/auto_tasker.html))<br/>4. Store the automation tool Tasker configuration (even share it in the Market), and automatically import the configuration into Tasker after use<br/>4. ... (as long as the external application supports this method call) | [Tasker](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm&hl=en_US&gl=US) is an automation tool and it supports exporting configuration as Uri |
+|**LifeUp->Other Applications**<br/>Implemented through the "URL" effect of the shop item| **After using the shop item:**<br/>1. Use a browser to visit a webpage<br/>2. Jump to WeChat and scan Scan, or specify a small program<br/>3. Automatically add accounting records ([such as "Qianji" supports accounting interface](http://docs.qianjiapp.com/plugin/auto_tasker.html))<br/>4. Store the automation tool Tasker configuration (even share it in the Market), and automatically import the configuration into Tasker after use<br/>5. Trigger Tasker to change wallpaper<br/>6. ... (as long as the external application supports this method call) | [Tasker](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm&hl=en_US&gl=US) is an automation tool and it supports exporting configuration as Uri |
 |**LifeUp->LifeUp**<br/>Implemented through the "URL" effect of the shop item| **After using the shop item:**<br/>1. Open a specific page<br/>2. Increase the ATM interest rate<br/>3. The pop-up window allows the user to select the product and reduce the price of the product (price reduction coupon)<br/>4. Trigger a task to complete<br/>5. Pop up a custom motivational message<br/>6. Create a task reward template: just enter the name to create a task automatically<br/>7. Pop up The window asks the user for branch selection, creating a small contextual interaction<br/>8. More in-app operations... |  |
-|**External applications/webpages->LifeUp** | **Configure automation tools:**<br/>1. 1. Determine when the phone is turned on for the first time every day, complete the task of getting up early, or directly trigger the "getting up late" penalty<br/>2. After every 25 words, swipe a specific NFC card and automatically complete the task<br/>3. The GPS determines that a new place is reached, and unlocks the "new place" achievement<br/>4. When connecting to the working WIFI every day, trigger the unlocking condition progress to increase. After accumulating 20 days, unlock the achievement of "Worker"<br/>5. Reward yourself with "arrive home" gold coins when connecting to your home WIFI for the first time every day<br/>6. Capture notifications from other Tomato or Focus applications, and automatically record the timing  to `LifeUp`<br/>7. Capture the completion or end notification of sports and learning software, and automatically issue "strength" and "knowledge" experience points<br/>8. Within the time period set by yourself, every time you open your phone, you will trigger a penalty<br/>9. ...<br/>**External Application linkage/self-developed application:**<br/>1. If you are not satisfied with the Pomodoro of `LifeUp`: you can develop your own timing software, which can be a web application or Android application, and link with "LifeUp" through the interface to Add timing records or add rewards<br/>2. Modify some intelligence mini-games (such as a Wordle example below). When the game is successfully completed, trigger `LifeUp` to send rewards<br/>3. ... |  |
+|**External applications/webpages->LifeUp** | **Configure automation tools:**<br/>1. Determine when the phone is turned on for the first time every day, complete the task of getting up early, or directly trigger the "getting up late" penalty<br/>2. After every 25 words, swipe a specific NFC card and automatically complete the task<br/>3. The GPS determines that a new place is reached, and unlocks the "new place" achievement<br/>4. When connecting to the working WIFI every day, trigger the unlocking condition progress to increase. After accumulating 20 days, unlock the achievement of "Worker"<br/>5. Reward yourself with "arrive home" gold coins when connecting to your home WIFI for the first time every day<br/>6. Capture notifications from other Tomato or Focus applications, and automatically record the timing  to `LifeUp`<br/>7. Capture the completion or end notification of sports and learning software, and automatically issue "strength" and "knowledge" experience points<br/>8. Within the time period set by yourself, every time you open your phone, you will trigger a penalty<br/>9. ...<br/>**External Application linkage/self-developed application:**<br/>1. If you are not satisfied with the Pomodoro of `LifeUp`: you can develop your own timing software, which can be a web application or Android application, and link with "LifeUp" through the interface to Add timing records or add rewards<br/>2. Modify some intelligence mini-games (such as a Wordle example below). When the game is successfully completed, trigger `LifeUp` to send rewards<br/>3. ... |  |
+
 
 <br/>In other words, all the above scenarios are actually "events" that trigger "actions".
 
@@ -28,13 +29,28 @@ if you need
 - Swipe the NFC card
 - Wake up every day to unlock the screen for the first time
 
-This kind of event requires the intervention of external applications.
+This kind of event requires the intervention of external applications. For example, do secondary development yourself or use automation tools such as `Tasker` and `MacroDroid`.
+
+
+
+**The LifeUp 1.90.2 update will add a series of "events", but these events can to be received by automated tools or external applications.**
+
+Can be used to achieve:
+
+After using the item, trigger automated tools such as Tasker to switch the launcher wallpaper.
+
+After completing the task, trigger an automated tool such as Tasker to open an app.
+
+**In the 1.90.2 version, it is possible to realize the "LifeUp event" triggering "Tasker's operation".**
+
+Tasker has extremely high permissions, which can be used to change wallpapers, uninstall apps, increase volume, choose to open specified apps, and more. You can even write UI interaction logic without programming foundation.
+
 
 ---
 
 ## Recommendations
 
-**If you are not familiar with programming,** you can search and import special shop items directly in the [World] - [Market] - [Link] tag. You can also try to edit parameters to meet your need.
+**If you are not familiar with programming,** you can search and import special shop items directly in the [World] - [Market] - [Link]/[API]/[Automate] tag. You can also try to edit parameters to meet your need.
 
 **If you are familiar with computer knowledge,** you can try to read the following interface documentation and edit the desired effect yourself. And use it with automation software such as [*Tasker*](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm). Even if you don't edit Tasker's configuration, as long as you can successfully install Tasker, you can import automated configurations shared by others in Market or other communities.
 
@@ -160,7 +176,7 @@ Please see below for specific calling rules.
 
 <br/>
 
-### Basics - Escaping
+### Basics - Escaping (URL Encode)
 
 If the value of your parameter contains special symbols such as +, space, =, %, &, #, etc., it needs to be escaped:
 
@@ -179,6 +195,11 @@ Take the interface of the above pop-up message as an example. If you want the fi
 Then you need to replace the spaces to +, the final effect is:
 
 <a href="lifeup://api/toast?text=You learned to call! &type=1&isLong=true">lifeup://api/toast?text=You learned to call! &type=1&isLong=true</a>
+<br/>
+
+**This is a simple coding tool implemented in Javscript:**
+
+<iframe src="guide/html/url_encoded.html" frameborder="0" scrolling="no" width="90%"> </iframe>
 
 <br/>
 
@@ -217,6 +238,20 @@ After enabling "Developer Mode", click on the shop item to view the details.
 #### Achievement condition id
 
 After customizing the unlock condition for the achievement "requires an external API call to unlock", you can see the condition id on the details page.and 
+
+<br/>
+
+### Basics - Return Values
+
+Some interfaces may have return values.
+
+**If you are developing an Android application,** you can use the `onActivityResult` method to receive the return value.
+
+**If you are using an automation application such as Tasker:**
+
+Generally, such applications cannot receive return values ​​of type Activity. So you need to add a `broadcast` parameter and then use the `received intent` event to receive the return value.
+
+For details, see the broadcast broadcast parameters below.
 
 <br/>
 
@@ -320,7 +355,7 @@ After customizing the unlock condition for the achievement "requires an external
 
 | Parameter | Meaning | Type | Example | Required | Notes |
 | ----------- | -------------- | -------------------- | - --- | -------- | ------------------------------------- ----------------------- |
-| todo | task content | any text | coin | yes | coin - gold |
+| todo | task content | any text | Write journey | yes |  |
 | notes | notes | any text | Notes | no | |
 | coin | coin reward amount | a number greater than 0 | 10 | no | The maximum value is 999999 |
 | coin_var | coin reward amount offset value | a number greater than 0 | 1 | no | If the value is greater than 0, when completing the task, gold coins will be randomly calculated in the interval [coin, coin+coin_var] |
@@ -331,8 +366,19 @@ After customizing the unlock condition for the achievement "requires an external
 | importance | importance level | number [1, 4] | 1 | no | default is 1 |
 | difficulty | difficulty level | number [1, 4] | 2 | no | default is 1 |
 | item_id | id of the rewarded item | a number greater than 0 | 1 |||
-| item_name | the name of the reward item | any text | treasure | No |fuzzy search item name|
+| item_name | the name of the reward item | any text | treasure | no |fuzzy search item name|
 | item_amount | amount of reward | [1, 99] | 1 | no | default is 1 |
+| deadline    | deadline time   |timestamp (milliseconds)       | 0    | no      ||
+| color | the color of the task tag |color text | \#66CCFF | no |available in v1.91+<br/>Note that the # character needs to be escaped when used. <br/>For example, when the color value of the example is actually used, it should be `color=%2366CCFF`|
+
+**Return Value:**
+
+Only supported since version 1.90.2
+
+| Parameter | Meaning | Value | Example | Required | Notes |
+| -------- | -------------- | ---- | ---- | -------- | ---- |
+| task_id | new task id | number | 1000 | yes | - |
+| task_gid | newly added task group id | number | 1000 | yes | - |
 
 <br/>
 
@@ -356,12 +402,108 @@ For repeating tasks, the id will be refreshed every time, but the "task group id
 
 The method of obtaining the id is to open the "Developer Mode" on the "Labs" page and then view it on the "Task Details" page.
 
-| Parameter | Meaning | Type | Example | Required | Remarks |
+| Parameter | Meaning | Type | Example | Required | Notes |
 | ---- | -------------- | ------------- | ---- | -------- | - --------------------------------------------- |
-| id | task id | number greater than 0 | coin | no* | task id; if it is a repeating task, the id will be updated every time it repeats. |
-| gid | task group id | number greater than 0 | remarks | no* | task group id; |
-| name | name | any text | 10 | no* | fuzzy search, only one of the tasks found |
+| id | task id | number greater than 0 | 1 | no* | task id; if it is a repeating task, the id will be updated every time it repeats. |
+| gid | task group id | number greater than 0 | 1 | no* | task group id; |
+| name | name | any text | get up | no* | fuzzy search, only one of the tasks found |
 | ui | Whether to display the popup UI | true or false | true | no | the default is false, only a message is displayed in the background |
+
+**Notice:**
+
+1. In order to be able to match the task, one of id, gid, and name must be provided.
+
+<br/>
+
+#### Give up a Task
+
+**Method name:** give_up
+
+**Description:** Trigger the task to give up.
+
+**Example:**
+
+- Search for tasks by name and give up: [lifeup://api/give_up?name=get up early](lifeup://api/give_up?name=get up early)
+
+**Explanation:**
+
+| Parameter | Meaning       | Type                  | Example | Required | Notes                                                        |
+| --------- | ------------- | --------------------- | ------- | -------- | ------------------------------------------------------------ |
+| id        | task id       | number greater than 0 | 1       | no*      | task id; if it is a repeating task, the id will be updated every time it repeats. |
+| gid       | task group id | number greater than 0 | 1       | no*      | task group id;                                               |
+| name      | name          | any text              | get up  | no*      | fuzzy search, only one of the tasks found                    |
+
+**Notice:**
+
+1. In order to be able to match the task, one of id, gid, and name must be provided.
+
+<br/>
+
+#### Freeze a task
+
+**Method name:** freeze
+
+**Description:** Trigger task freeze, only for repeating tasks.
+
+**Example:**
+
+- Search for tasks by name and freeze: [lifeup://api/freeze?name=get up early](lifeup://api/freeze?name=get up early)
+
+**Explanation:**
+
+| Parameter | Meaning       | Type                  | Example | Required | Notes                                                        |
+| --------- | ------------- | --------------------- | ------- | -------- | ------------------------------------------------------------ |
+| id        | task id       | number greater than 0 | 1       | no*      | task id; if it is a repeating task, the id will be updated every time it repeats. |
+| gid       | task group id | number greater than 0 | 1       | no*      | task group id;                                               |
+| name      | name          | any text              | get up  | no*      | fuzzy search, only one of the tasks found                    |
+
+**Notice:**
+
+1. In order to be able to match the task, one of id, gid, and name must be provided.
+
+<br/>
+
+#### Unfreeze a task
+
+**Method name:** unfreeze
+
+**Description:** Trigger task freeze, only for repeating tasks.
+
+**Example:**
+
+- Search for tasks by name and unfreeze: [lifeup://api/unfreeze?name=get up early](lifeup://api/unfreeze?name=get up early)
+
+**Explanation:**
+
+| Parameter | Meaning       | Type                  | Example | Required | Notes                                                        |
+| --------- | ------------- | --------------------- | ------- | -------- | ------------------------------------------------------------ |
+| id        | task id       | number greater than 0 | 1       | no*      | task id; if it is a repeating task, the id will be updated every time it repeats. |
+| gid       | task group id | number greater than 0 | 1       | no*      | task group id;                                               |
+| name      | name          | any text              | get up  | no*      | fuzzy search, only one of the tasks found                    |
+
+**Notice:**
+
+1. In order to be able to match the task, one of id, gid, and name must be provided.
+
+<br/>
+
+#### Delete a task
+
+**Method name:** delete_task
+
+**Description:** Delete  a task.
+
+**Example:**
+
+- Search for tasks by name and delete it: [lifeup://api/delete_task?name=get up early](lifeup://api/delete_task?name=get up early)
+
+**Explanation:**
+
+| Parameter | Meaning       | Type                  | Example | Required | Notes                                                        |
+| --------- | ------------- | --------------------- | ------- | -------- | ------------------------------------------------------------ |
+| id        | task id       | number greater than 0 | 1       | no*      | task id; if it is a repeating task, the id will be updated every time it repeats. |
+| gid       | task group id | number greater than 0 | 1       | no*      | task group id;                                               |
+| name      | name          | any text              | get up  | no*      | fuzzy search, only one of the tasks found                    |
 
 **Notice:**
 
@@ -380,10 +522,10 @@ The method of obtaining the id is to open the "Developer Mode" on the "Labs" pag
 - Set ATM interest rate to 0.01%: [lifeup://api/shop_settings?key=atm_interest&value=0.01](lifeup://api/shop_settings?key=atm_interest&value=0.01)
 - Increase interest rate by 0.01% per click: [lifeup://api/shop_settings?key=atm_interest&value=0.01&set_type=relative](lifeup://api/shop_settings?key=atm_interest&value=0.01&set_type=relative)
 
-| Parameter | Meaning | Type | Example | Required | Remarks |
+| Parameter | Meaning | Type | Example | Required | Notes |
 | -------- | ------------ | ------------------------ ------------- | ------------ | -------- | -------------- -------------------------------------------------------- |
-| key | type | Currently only following values  supported: <br/>atm_interest<br/>credit_interest<br/>line_of_credit<br/>discount_rate_for_returning | atm_interest | yes | atm_interest - ATM daily rate<br/>credit_interest - loan daily rate<br/>line_of_credit - loanable amount<br/>discount_rate_for_returning - return discount Scale |
-| value | numeric value | decimal number | 0.01 | yes | different keys correspond to different value ranges |
+| key | type | Currently only following values  supported: <br/>atm_interest<br/>credit_interest<br/>line_of_credit<br/>discount_rate_for_returning<br/>atm_balance | atm_interest | yes | atm_interest - ATM daily rate<br/>credit_interest - loan daily rate<br/>line_of_credit - loanable amount<br/>discount_rate_for_returning - return discount Scale<br/>atm_balance - Set ATM balance |
+| value | numeric value | decimal number or integer | 0.01 | yes | different keys correspond to different value ranges<br/>For example, ATM balances do not support decimal points |
 | set_type | How to set the value | One of the following values:<br/>absolute<br/>relative | absolute | yes |absolute - absolute value, that is, directly set the target to value<br/>relative - relative values, adding or subtracting from the original value|
 
 <br/>
@@ -398,7 +540,7 @@ The method of obtaining the id is to open the "Developer Mode" on the "Labs" pag
 
 **Explanation:** Jump to the Labs page
 
-| Parameter | Meaning | Value | Example | Required | Remarks |
+| Parameter | Meaning | Value | Example | Required | Notes |
 | ---- | ---- | --------------------------------------- --------------------- | ---- | -------- | ---- |
 | page | page| One of the following values:<br/>main<br/>setting<br/>about<br/>pomodoro<br/>feelings<br/>achievement<br/>history<br/>add_task<br/>add_achievement<br/>add_achievement_cate<br/>exp<br/>coin<br/>backup<br/>add_item<br/>lab<br/>custom_attributes<br/>pomodoro_record<br/>synthesis<br/>pic_manage | lab | yes | |
 
@@ -416,7 +558,7 @@ The method of obtaining the id is to open the "Developer Mode" on the "Labs" pag
 
 **Explanation:** Create a shop item with the name "Take a 10-minute break", the description as "Go and take a short break! ", and the action text copy as "Rest" with a price of 10 gold coins.
 
-| Parameter | Meaning | Type | Example | Required | Remarks |
+| Parameter | Meaning | Type | Example | Required | Notes |
 | ---------------- | ------------ | ---------------- | -- ---------- | -------- | -------------------- |
 | name | shop item name | any text | 10 minute break | yes | shop item name |
 | desc | description | any text | get a gift | no | |
@@ -425,6 +567,15 @@ The method of obtaining the id is to open the "Developer Mode" on the "Labs" pag
 | action_text | action button text | any text | rest | no | |
 | disable_purchase | whether to disable purchases | true or false | 1 | no | default false |
 | stock_number | number of stocks | [-1, 99999] | 1 | no | |
+| category         | shop item list id   | a number greater than or equal to 0 | 0            | no      | 0 or not passed represents the default list, and cannot select a smart list<br/>For the acquisition method, please refer to the above "Basic Knowledge - Person Level Data ID" |
+
+**Return Value:**
+
+Only supported since version 1.90.2
+
+| Parameter | Meaning     | Type   | Example | Required | Notes |
+| --------- | ----------- | ------ | ------- | -------- | ----- |
+| item_id   | new item id | number | 1000    | yes      |       |
 
 <br/>
 
@@ -438,7 +589,7 @@ The method of obtaining the id is to open the "Developer Mode" on the "Labs" pag
 
 **Explanation:** For a shop with an id of 1, increase its price by 1 coin and increase the own number of it by 1
 
-| Parameter | Meaning | Value | Example | Required | Remarks |
+| Parameter | Meaning | Type | Example | Required | Notes |
 | ----------------- | ------------------------- | ----- ----------------------------------- | ------------ | - ------- | ------------------------------------------------------ ------------------ |
 | id | shop item id | a number greater than 0 | 1 | no* ||
 | name | shop item name | any text | treasure | no* | when used for unknown id, fuzzy search for commodities, not name modification |
@@ -447,10 +598,11 @@ The method of obtaining the id is to open the "Developer Mode" on the "Labs" pag
 | set_icon | modify icon | any text | | no | Icon should be a web address URL |
 | set_price | adjust price value | number | 1 | no | |
 | set_price_type | price adjustment method (absolute/relative) | One of the following values: <br/>absolute<br/>relative | relative | no | absolute - absolute value, that is, directly set the target to value<br/>relative - relative values, adding or subtracting from the original value |
-| own_number | modify own number | number | 1 | no | |
-| own_number_type | price adjustment method (absolute/relative) | One of the following values:<br/>absolute<br/>relative | relative | no | absolute - absolute value, that is, directly set the target to value<br/>relative - relative values, adding or subtracting from the original value |
-| stock_number | stock number | number greater than or equal to 0 | 1 | no | |
-| stock_number_type | price adjustment method (absolute/relative) | One of the following values: <br/>absolute<br/>relative | relative | no | absolute - absolute value, that is, directly set the target to value<br/>relative - relative values, adding or subtracting from the original value |
+| own_number | modify own number | number [-, +] | 1 | no | |
+| own_number_type | own number adjustment method (absolute/relative) | One of the following values:<br/>absolute<br/>relative | relative | no | absolute - absolute value, that is, directly set the target to value<br/>relative - relative values, adding or subtracting from the original value |
+| stock_number | stock number | number [-, +] | 1 | no | |
+| stock_number_type | stock number adjustment method (absolute/relative) | One of the following values: <br/>absolute<br/>relative | relative | no | absolute - absolute value, that is, directly set the target to value<br/>relative - relative values, adding or subtracting from the original value |
+| disable_purchase | Is it disabled to purchase the item | `true` or `false` | true | no | available in v1.91 |
 
 **Notice:**
 
@@ -468,21 +620,75 @@ The method of obtaining the id is to open the "Developer Mode" on the "Labs" pag
 
 **Explanation:** Increase the proportion of the [large] bag of gold coins in the gold coin box by 1 point.
 
-| Parameter   | Meaning                               | Value                                                   | Example        | Required | Remarks                                                      |
+| Parameter   | Meaning                               | Type                                                    | Example        | Required | Notes                                                        |
 | ----------- | ------------------------------------- | ------------------------------------------------------- | -------------- | -------- | ------------------------------------------------------------ |
-| id          | item id                               | A number greater than 0                                 | 1              | No*      | Please refer to the above "Basic Knowledge - Person-liter Data ID" for how to obtain |
-| name        | item name                             | Arbitrary text                                          | Treasure chest | No*      | When used for unknown id, fuzzy search product, not name modification |
-| sub_id      | content item id                       | A number greater than 0                                 | treasure chest | No*      | id of chest contents                                         |
-| sub_name    | content item name                     | Any text                                                | Get a gift     | No*      | For fuzzy search items when the id of the contents of the box is unknown |
-| set_type    | adjustment method (absolute/relative) | One of the following values: <br/>absolute<br/>relative | relative       | No       | absolute - absolute value, that is, directly set the target to value<br/>relative - relative values, adding or subtracting from the original value |
-| amount      | number of content item                | Number                                                  | 1              | No       | number of rewards for a single item                          |
-| probability | probability of the content item       | Number                                                  | relative       | No       |                                                              |
-| fixed       | whether it is a fixed reward          | A number greater than or equal to 0                     | 1              | No       |                                                              |
+| id          | item id                               | a number greater than 0                                 | 1              | no*      | Please refer to the above "Basic Knowledge - Person-liter Data ID" for how to obtain |
+| name        | item name                             | any text                                                | Treasure chest | no*      | When used for unknown id, fuzzy search product, not name modification |
+| sub_id      | content item id                       | a number greater than 0                                 | treasure chest | no*      | id of chest contents                                         |
+| sub_name    | content item name                     | any text                                                | Get a gift     | no*      | For fuzzy search items when the id of the contents of the box is unknown |
+| set_type    | adjustment method (absolute/relative) | one of the following values: <br/>absolute<br/>relative | relative       | no       | absolute - absolute value, that is, directly set the target to value<br/>relative - relative values, adding or subtracting from the original value |
+| amount      | number of content item                | number                                                  | 1              | no       | number of rewards for a single item                          |
+| probability | probability of the content item       | number                                                  | relative       | no       | -                                                            |
+| fixed       | whether it is a fixed reward          | boolean                                                 | true/false     | no       | -                                                            |
 
 **Notice:**
 
 1. In order to search for a product, either id or name must be provided.
 1. In order to search for content, either sub_id or sub_name must be provided.
+
+<br/>
+
+### ATM
+
+**⚠ Only available in v1.91+**
+
+> The deposit and withdrawal operations here will be verified.
+>
+> If you need to adjust the ATM balance value directly, you can check the "Shop Settings" interface above.
+
+#### Deposit
+
+**Method name: **deposit
+
+**Description:** The deposit will be checked for legality (whether the coin balance is sufficient).
+
+**Example:**[lifeup://api/deposit?amount=500](lifeup://api/deposit?amount=500)
+
+**Explanation:** Deposit 500 coins.
+
+| Parameter | Meaning        | Type                    | Example | Required | Notes |
+| --------- | -------------- | ----------------------- | ------- | -------- | ----- |
+| amount    | deposit amount | a number greater than 0 | 100     | yes      | -     |
+
+**Return: **
+
+| Parameter | Meaning                              | Type              | Example | Required | Notes |
+| --------- | ------------------------------------ | ----------------- | ------- | -------- | ----- |
+| result    | Whether the operation was successful | `true` or `false` | true    | yes      | -     |
+
+<br/>
+
+#### Withdraw
+
+**Method name: **withdraw
+
+**Description:** Withdrawals will be checked for legality (whether the ATM balance is sufficient).
+
+**Example:** [lifeup://api/withdraw?amount=500](lifeup://api/withdraw?amount=500)
+
+**Explanation:** Withdraw 500 coins.
+
+| Parameter | Meaning           | Type                    | Example | Required | Notes |
+| --------- | ----------------- | ----------------------- | ------- | -------- | ----- |
+| amount    | withdrawal amount | a number greater than 0 | 100     | yes      | -     |
+
+**Return: **
+
+| Parameter | Meaning                              | Type              | Example | Required | Notes |
+| --------- | ------------------------------------ | ----------------- | ------- | -------- | ----- |
+| result    | Whether the operation was successful | `true` or `false` | true    | yes      | -     |
+
+<br/>
 
 ### Add Pomodoro Record
 
@@ -497,12 +703,12 @@ The method of obtaining the id is to open the "Developer Mode" on the "Labs" pag
 
 **Explanation:**
 
-| Parameter | Meaning | Value | Example | Required | Remarks |
+| Parameter | Meaning | Type | Example | Required | Notes |
 | --------------- | ------------ | -------------------- --------- | ------------- | -------- | ----------------- ---------------------------- |
 | start_time | timing start time | timestamp | 1659322800000 | no* | If you know nothing about Timestamp, google it! |
 | duration | focus duration | number (in milliseconds) <br/>must be greater than 30000 | 1500000 | no* | |
 | end_time | timing end time | timestamp | 1659326400000 | no* | |
-| reward_tomatoes | whether to reward tomatoes | true or false | true | no | default is true |
+| reward_tomatoes | whether to reward tomatoes | true or false | true | no | default is false |
 | task_id | task id | a number greater than 0 | coin | no ||
 | task_gid | task group id | a number greater than 0 | remarks | no ||
 | task_name | name | any text | 10 | no | fuzzy search, only one of the tasks found |
@@ -527,15 +733,110 @@ The method of obtaining the id is to open the "Developer Mode" on the "Labs" pag
 
 - Call the unlock condition with unlock id 2: [lifeup://api/unlock_condition?id=2](lifeup://api/unlock_condition?id=2)
 
-| Parameter | Meaning | Value | Example | Required | Remarks |
+| Parameter | Meaning | Type | Example | Required | Notes |
 | ---- | ------ | ------------- | ---- | -------- | --------- ------------------------------------ |
-| id | condition id | number greater than 0 | 2 | Yes ||
+| id | condition id | number greater than 0 | 2 | yes ||
+
+<br/>
+
+### Set the number of steps
+
+**Method name:** step
+
+**Description:** Set the number of steps on the specified date, for example, it can be used to enter the number of steps with a wristband + automation tool. And can be used to modify historical records.
+
+**Example:**
+
+- Adjust the number of steps for 2022-10-21 in GMT+8 time zone to 9999 steps: [lifeup://api/step?count=9999&time=1666282995643](lifeup://api/step?count=9999&time=1666282995643)
+
+| Parameter | Meaning | Type | Example | Required | Notes |
+| ----- | -------------------- | ------------------- | -- ----------- | -------- | ---- |
+| count | number of steps | a number greater than or equal to 0 | 9999 | yes | |
+| time | arbitrary timestamp of the date | timestamp (ms) | 1666282995643 | yes | |
+
+<br/>
+
+#### Simple Query
+
+!> The functions here are used with automated tools/secondary development. If you need to query a complete list of data, you can refer to our [`LifeUp SDK`, `LifeUp Cloud`](https://github.com/Ayagikei/LifeUp-SDK) and [`LifeUp Desktop`.](https://github.com/Ayagikei/LifeUp-Desktop)
+
+**Method name:** query
+
+**Description:** query parameters
+
+**Example:** - Query the current number of coins: [lifeup://api/query?key=coin](lifeup://api/query?key=coin)
+
+
+| Parameter | Meaning            | Type                                                        | Example | Required                                    | Notes                                                        |
+| --------- | ------------------ | ----------------------------------------------------------- | ------- | ------------------------------------------- | ------------------------------------------------------------ |
+| key       | type of query      | Only one of the following values:<br/>coin<br/>atm<br/>item | coin    | yes                                         | coin - current amount of coins<br/>atm - current ATM balance<br/>item - Item information for the specified `item_id` |
+| item_id   | the id of the item | a number greater than 0                                     | 1       | When the key is `item`, it must be provided | -                                                            |
+
+**Return Value:**
+
+Only supported since version 1.90.2
+
+When querying coin/atm:
+
+| Parameter | Meaning | Type | Example | Required | Notes |
+| ----- | -------------- | ---- | ---- | -------- | ---- |
+| value | Numeric value returned by the query | number | 1000 | yes | |
+
+When querying an item: 
+
+| Parameter        | Meaning                         | Type     | 示例      | Required | Notes                                                 |
+| ---------------- | ------------------------------- | -------- | --------- | -------- | ----------------------------------------------------- |
+| item_id          | the id of the item              | number   | 1         | yes      | -                                                     |
+| name             | the name of the item            | any text | Coffee    | yes      | -                                                     |
+| desc             | description                     | any text |           | no       | -                                                     |
+| icon             | icon URL                        | any text | icon.webp | no       | If it is a local file, only the file name is returned |
+| category_id      | category data id                | number   | 1         | yes      | -                                                     |
+| stock_number     | shop stock quantity             | number   | -1        | yes      | `-1` represents infinite shop inventory               |
+| own_number       | the own number in the Inventory | number   | 10        | yes      | -                                                     |
+| price            | the price                       | number   | 100       | yes      | -                                                     |
+| order            | sort by                         | number   | 100       | yes      | Weight value when custom sorting                      |
+| disable_purchase | Whether to disable purchase     |          | true      | yes      | -                                                     |
+
+
+
+<br/>
+
+#### Query Attributes
+
+!> The functions here are used with automated tools/secondary development.
+
+**Method name:** query_skill
+
+**Description:** Query the name, level, total experience value of the specified attribute, the experience value required to reach the next level, and the experience value of the current level.
+
+It is possible to use this api to custom your attributes widgets.
+
+**Example:**
+
+- Query strength attribute: [lifeup://api/query_skill?id=1](lifeup://api/query_skill?id=1)lifeup://api/query?key=coin)
+
+
+| Parameter | Meaning              | Type                    | Example | Required | Notes                                                        |
+| --------- | -------------------- | ----------------------- | ------- | -------- | ------------------------------------------------------------ |
+| id        | attribute (skill) id | a number greater than 0 | 1       | yes      | For the acquisition method, please refer to the above "Basic Knowledge - Person Level Data ID" |
+
+**Return Value:**
+
+Only supported since version 1.90.6
+
+| Parameter | Meaning                             | Type | Example | Required | Notes |
+| --------- | ----------------------------------- | ------ | ------- | -------- | ------- |
+| name | attribute name | string | strength | yes | |
+| level | level | number | 10 | yes | |
+| total_exp | total experience points | number | 10000 | yes | |
+| until_next_level_exp | EXP required to reach the next level | number | 99 | yes | |
+| current_level_exp | Earned EXP above current level | Number | 1000 | Yes | |
 
 <br/>
 
 ### Special interface
 
-### Confirm Dialog
+#### Confirm Dialog
 
 **Method name:** confirm_dialog
 
@@ -549,7 +850,7 @@ The method of obtaining the id is to open the "Developer Mode" on the "Labs" pag
   - Event branch selection
 
 
-| Parameter | Meaning | Type | Example | Required | Remarks |
+| Parameter | Meaning | Type | Example | Required | Notes |
 | --------------- | ------------------ | -------------- - | -------------------------------------------- | --- ----- | -------------------------------------------- ---------------- |
 | title | popup title | any text | Title | yes | |
 | message | detailed description of the popup window | any text | This is the content of the popup window | no | |
@@ -562,11 +863,23 @@ The method of obtaining the id is to open the "Developer Mode" on the "Labs" pag
 <br/>
 
 
+#### No Action
+
+**Method name:** placeholder
+
+**Note:** This interface itself does not handle any logic, but you can use it with callback and broadcast.
+
+**Example:**
+
+- [lifeup://api/placeholder?broadcast=app.lifeup.item.rest](lifeup://api/placeholder?broadcast=app.lifeup.item.rest)
+
+<br/>
+
 #### Variable Placeholder
 
 `LifeUp` provides user intervention processing methods for parameters.
 
-| placeholder | meaning | example |
+| Placeholder | Meaning | Example |
 | ---------------- | -------------------------------- -- | ---------------------- |
 | [$text\|title] | text placeholder | [$text\|Enter task name] |
 | [$number\|Title] | Number placeholder (without decimal point) | [$number\|Enter price] |
@@ -623,6 +936,174 @@ X application -> LifeUp -> Y application
 
 <br/>
 
+#### Broadcast return value
+
+!> The functions here are used with automated tools/secondary development, and there are certain thresholds.
+
+By adding this parameter, the original return value of the API can also be sent by broadcasting. so that automated tools such as Tasker can receive it.
+
+The value of broadcast is equivalent to the value of the operation column of "Intentions Received" in Tasker. You can fill in any text, as long as the two correspond.
+
+**For example, using the API for querying gold coins with Tasker ([If you're using MacroDroid, please check this link.](https://github.com/Ayagikei/LifeUp/issues/43)):**
+
+[lifeup://api/query?key=coin](lifeup://api/query?key=coin)
+
+1. Add the broadcast parameter to enable it to broadcast the return value to the Tasker, which can be any text, such as `app.lifeup.query.coin`.
+
+   [lifeup://api/query?key=coin&broadcast=app.lifeup.query.coin](lifeup://api/query?key=coin&broadcast=app.lifeup.query.coin)
+
+2. Add event in Tasker -> "Intent Received", fill in "app.lifeup.query.coin" in the action column
+
+3. The task in Tasker can then receive the return value of `value` in the form of a `%value` variable.
+
+4. Then you can judge the number of gold coins in Tasker to achieve various effects. (For example, change the desktop wallpaper according to the number of gold coins?)
+
+![](_media/api/broadcast_01.png ':size=30%')
+
+![](_media/api/broadcast_02.png ':size=30%')
+
+![](_media/api/broadcast_03.png ':size=30%')
+
+![](_media/api/broadcast_04.png ':size=30%')
+
+<br/>
+
+---
+
+## Broadcast Event Notification
+
+!> The functions here are used with automated tools/secondary development.
+
+> In version 1.90.2, we will broadcast various events to the outside world. You can use automation tools such as Tasker to receive these events to trigger Tasker actions.
+### Enable
+
+**By default, broadcast events are turned off.**
+
+You can enable it in `Settings`-`Labs`-`Developer mode`-`Broadcast events`.
+
+### Example: Change wallpaper with an item
+
+1. Create a new item called "Change Wallpaper".
+2. In Tasker, go to `Configuration file`->`Event`->`System`->`Intent Received`, enter `app.lifeup.item.use` in the operation column, and return.
+3. Click New Task and enter any name (for example, change wallpaper).
+4. Click the + sign in the lower right corner to add a task, select `Task`->`If`
+5. Adjust the condition column to `%name eq change wallpaper`.
+6. Go back, `Insert Action` select `If`.
+7. Click the + sign in the lower right corner again to add a task, select `Display` -> `Set Wallpaper`
+8. (Optional) Replace `Type` with `All`
+9. In the image column, click the 🔍 icon and select the wallpaper file you want
+10. Exit and check if this configuration is enabled.
+11. Use the "Wallpaper Change" item in `LifeUp`, you should be able to see the wallpaper change successfully
+
+![](_media/api/broadcast_sample_01.png ':size=30%')
+
+![](_media/api/broadcast_sample_02.png ':size=30%')
+
+![](_media/api/broadcast_sample_03.png ':size=30%')
+
+![](_media/api/broadcast_sample_04.png ':size=30%')
+
+Using `No Action`+`Broadcast return value` can achieve this effect in a more concise way, you can explore it.
+
+<br/>
+
+### Task completed
+
+**Name:** app.lifeup.task.complete
+
+**Return value:**
+
+| Parameters | Meaning       | Examples        |
+| ---------- | ------------- | --------------- |
+| task_id    | task id       | 1               |
+| task_gid   | task group id | 1               |
+| name       | task name     | Getting started |
+
+### Task given up
+
+**Name:** app.lifeup.task.giveup
+
+**Return value:**
+
+| Parameters | Meaning       | Examples        |
+| ---------- | ------------- | --------------- |
+| task_id    | task id       | 1               |
+| task_gid   | task group id | 1               |
+| name       | task name     | Getting started |
+
+### Task overdue
+
+**Name:** app.lifeup.task.overdue
+
+**Return value:**
+
+
+| Parameters | Meaning                 | Examples                        |
+| ---------- | ----------------------- | ------------------------------- |
+| task_ids   | task id **array**       | [1, 2, 3]                       |
+| task_gids  | task group id **array** | [1, 2, 3]                       |
+| names      | task name **array**     | [Getting started, Drink Waters] |
+
+
+### Achivement unlocked
+
+**Name:** app.lifeup.achievement.unlock
+
+**Return value:**
+
+| Parameters     | Meaning          | Examples                 |
+| -------------- | ---------------- | ------------------------ |
+| achievement_id | achievement id   | 1                        |
+| name           | achievement name | Using LifeUp for 30 days |
+
+### Items purchased
+
+**Name:** app.lifeup.item.purchase
+
+**Return value:**
+
+| Parameters | Meaning           | Examples          |
+| ---------- | ----------------- | ----------------- |
+| item_id    | item id           | 1                 |
+| name       | item name         | Break 10 branches |
+| amount     | purchase quantity | 1                 |
+
+### Item used
+
+**Name:** app.lifeup.item.use
+
+**Return value:**
+
+| Parameters | Meaning      | Examples          |
+| ---------- | ------------ | ----------------- |
+| item_id    | item id      | 1                 |
+| name       | item name    | Break 10 branches |
+| amount     | use quantity | 1                 |
+
+### Level up
+
+**Name:** app.lifeup.level.up
+
+**Return value:**
+
+| Parameters | Meaning       | Examples |
+| ---------- | ------------- | -------- |
+| skill_id   | task id       | 1        |
+| name       | name          | strength |
+| level      | current level | 2        |
+
+### Level down
+
+**Name:** app.lifeup.level.down
+
+**Return value:**
+
+| Parameters | Meaning       | Examples |
+| ---------- | ------------- | -------- |
+| skill_id   | task id       | 1        |
+| name       | name          | strength |
+| level      | current level | 2        |
+
 ---
 
 ## Integration
@@ -637,7 +1118,7 @@ The API functionality is currently only in one version iteration.
 
 In the future, we will continue to add more APIs to meet more usage scenarios.
 
-If you need API scenarios, you can leave Issues on [Github](https://github.com/Ayagikei/LifeUp/issues/new/choose).
+If you need more APIs, you can leave Issues on [Github](https://github.com/Ayagikei/LifeUp/issues/new/choose).
 
 <br/>
 
@@ -699,3 +1180,10 @@ location.href='lifeup://api/reward?type=coin&content=consolation+prize&number=1'
 
 ### Application/Web/Automation Developer
 Let us know if you've developed anything related to LifeUp!
+
+<br/>
+
+### Any programming language/platform that supports the HTTP protocol
+
+For details, please refer to https://github.com/Ayagikei/LifeUp-SDK and [LifeUp Cloud - HTTP APIs - Google Play](https://play.google.com/store/apps/details?id=net.lifeupapp.lifeup.http).
+

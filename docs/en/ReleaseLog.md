@@ -1,12 +1,195 @@
-# Release Log
+# Release Notes
 
 ## Timeline
 
 ![timeline](_media/release_log/timeline.png)
 
-## Log
+## Notes
 
 (Part of the translation is provided by Google Translate and may not be accurate)
+
+**1.90.7 (2022/11/07)**
+
+**✨Features**
+
+1. Added: Vietnamese translation and translator's signature (Google version)
+2. Added: "Skip cropping" image selection method, which is suitable for selecting gif animations (member function)
+3. Added: delete task API
+4. Added: Support setting to abandon the task sound effect
+5. Added: Simple synthesis MAX quantity operation
+6. Support re-locking unlocked achievements
+7. "Add Product API" supports specifying list id
+
+
+
+**♻️Optimization**
+
+1. Improve the description of deleting history
+2. The experience limit is changed from (3/4 places) to (4/5 places)
+3. Added penalty coefficient display on details page
+4. Globally improve the interaction design of the date-time selection box
+5. The achievement details pop-up window will now differentiate the icon color according to whether the conditions are completed or not.
+6. Change tomato shortcut icon
+7. When creating an item from a smart list, if the selectable list is 0 or 1, automatically select it
+8. The developer mode displays the item list ID
+9. Limit the input length of some common fields to avoid crashes
+
+
+
+**🐛 Fixed**
+
+1. Fixed the problem that the reward calculation for changing the item history record was abnormal in some scenarios
+2. Fix the problem that the "Show Archived" switch does not match the display in some scenarios
+3. Improve the data loading logic of the widget (may fix some abnormal problems)
+4. Repair the automatic calculation logic of manually adding timing records, now you only need to fill in any item
+5. Fix the abnormal refresh problem of the tomato timing record page
+6. Fixed the problem that sub-tasks could not clear commodity rewards
+7. Fixed the problem that after selecting all items, re-selecting some items does not take effect
+8. Optimize the memory required for preview images
+9. Widget refresh is now triggered after adjusting the list order
+10. Optimized the problem that some backup methods will get stuck on the interface
+
+
+
+**1.90.6 (2022/10/21)**
+
+**✨Features**
+
+1. Add API for setting the number of steps on a specified date
+2. Added API for querying the status of specified attributes (experience value, level)
+3. Support direct import of backup data from file manage
+4. APIs related to reward items are no longer limited 99
+
+
+
+**♻️Optimization**
+
+1. Optimize the transition animation effect when entering the event details page
+2. Optimize the edit items page, increase the UI effect of enabling penalty, and improve its guide
+3. Change the operation icons on the timing page
+4. In the purchase pop-up window, add warnings and instructions for items with negative own numbers
+5. Optimize the immersive status bar effect of the home page
+6. Added compatibility configuration reminder to Pomodoro page
+7. Improve the speed of exporting backup and restoring backup files
+8. Instructions for the stock number setting
+9. Temporarily remove the setting of [When the product inventory is 0, the corresponding task reward will be automatically removed].
+10. Optimize the license check mechanism with free trial version.
+11. When a task that is "Pin" is selected, the action is now displayed as "Unpin"
+12. When switching to positive timing, the *experimental* warning no longer pops up every time
+
+
+
+**🐛 Fixed**
+
+1. Fixed the abnormal system boundary of some pages or with tablets
+2. Fixed an issue where incorrect data would be displayed when entering the inventory for the first time in some cases
+3. Fixed an issue that data cannot be recovered at all due to internal damage (such as image damage) when restoring damaged backup files
+4. Fixed an issue that the "Buy" button will be displayed unexpectedly after long-pressing the sold-out item
+5. Fixed an issue that the attribute introduction of the new team page is the old version
+
+
+
+**1.90.5 (2022/09/22)**
+
+**♻️Optimization**
+
+1. Adapt to some devices with abnormal webp conversion (the cropped image may be larger than the original image on these devices). After selecting a picture, determine the size of the picture and perform secondary compression.
+2. Improve the description of target repetitions in the details page
+3. Support the use of the same product to accumulate the time during the countdown
+4. Add more novice guide tasks
+5. Update translations
+
+**🐛 Fixed**
+
+1. Fix the abnormal UI problem of the composite page
+2. Fixed several known crash issues
+3. Improve the problem that the countdown of goods may be abnormally interrupted and accumulated time under long-term countdown
+4. Fix the UI exception of the input feeling pop-up window when the widget completes the task
+
+
+
+**1.90.4 (2022/09/15)**
+
+1. Fix the abnormal problem when the widget completes the task (may cause a transparent page to appear, and the operation cannot be continued)
+2. Disable the widget's ability to select images from impressions
+
+**1.90.3 (2022/09/14)**
+
+1. Fixed the focus issue when sorting subtasks
+2. Improve attributes color in frozen/unstarted tasks
+3. Add given-up tasks event broadcast
+4. Fixed the probability text color
+5. Improve the starter tasks(preset tasks)
+6. Fixed the issue that the import items dialog may select the "All" list by default
+7. Fixed the shop item group issues
+8. A warning is now given when setting an unusual time (time does not match repeat frequency).
+9. Improve the task calculation rules in the calendar, which should now accurately predict the deadlines of future tasks.
+10. Fixed an issue where the completion of the calendar could be calculated for frozen tasks.
+11. Improved default start time settings when editing tasks.
+12. Improve license detection mechanism.
+13. Optimize the processing of the countdown of items. Repeated execution is prohibited to reduce the time accumulation problem that does not meet expectations.
+14. Fixed edge-to-edge issue when using virtual keys on some pages.
+15. Fixed an issue where you couldn't select a thought image when the desktop widget completed a task.
+
+**1.90.2 (2022/08/31)**
+
+**✨Features**
+
+1. Add broadcast events.
+   Now you can use Tasker/MacroDroid to receive events such as using items, completing tasks, etc., and triggering Tasker's actions.
+
+   For example: If the item is used, it will trigger the replacement of random wallpapers.
+   In theory, if you want, you can implement functions such as application locks and game interaction scenarios.
+
+2. New API:
+
+- Give up tasks
+- Freeze tasks
+- Unfreeze tasks
+- Empty interface
+- Query
+
+3. Added return value for add new item and task API
+4. When importing items from the market, now you can select the target list
+5. Adapt to the secondary color of Material 3
+6. Update language translation, add Korean language support
+
+
+
+**♻️Improvements**
+
+1. When unboxes in batches, also display the probability of a single product
+2. Optimize some UI display effects in night mode
+3. Optimize the interactive logic of the date-time selection pop-up window. When selecting the current day, it will automatically switch to the time selection page.
+4. When the API calls item selection and list selection, the pop-up window no longer supports direct closing (to prevent API calls from being lost)
+5. Optimize the default height of some pop-up windows at the bottom of the tablet horizontal screen
+6. Optimize the automatic closing timing of the pop-up window
+
+
+
+**🐛 Fixes**
+
+1. Fix the problem that the API search task may fail in some cases
+2. Fixed occasional crash on the task list page
+3. Fixed the problem that the "Undo" operation button appears when long-pressing the normal achievements that are not unlocked.
+4. Fixed an issue where the achievement details pop-up window might be displayed incompletely
+5. Fix the problem that when uploading the window, it may fail due to the abnormally large picture
+6. Fix the problem that own_number and stock_number of item API do not support negative numbers
+7. Fix the problem that the number of days of persistence on the "Me" page is sometimes abnormally displayed as 1
+8. Fix the problem that sometimes -x days ago is displayed
+9. Fixed the issue that subsequent APIs may be canceled abnormally when calling APIs in batches
+10. Fix the problem that the content filled in by the new team may be lost when the page is destroyed
+
+
+
+**1.90.1 (2022/08/22)**
+
+**🐛 Fixes**
+
+1. Fix API call concurrency issue
+2. Fix the problem that when a large number of products (thousands) are selected, multiple selections of products may cause a freeze
+3. Fix the abnormal problem when the widget completes the team task
+4. Fixed the issue that editing subtask experience would not be backfilled
 
 **1.90.0 (rc01, rc02) (2022/08/15)**
 

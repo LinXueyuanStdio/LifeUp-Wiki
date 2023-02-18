@@ -1,14 +1,25 @@
-# 备份
+# 备份与恢复
 
-[在微信公众号查看本文（含坚果云备份的设置视频教程）](https://mp.weixin.qq.com/s?__biz=MzI0OTQ4OTAxMQ==&mid=2247483867&idx=1&sn=d24068b74810d5b91b37c1abda436eca&chksm=e991f2c7dee67bd1ed49e74b3131bf7812c22f2a58a82cdac3c30182665296262a3c86a77b1d&mpshare=1&scene=23&srcid=1205mlIjJmwwyVugMJ7P25jM&sharer_sharetime=1639901809270&sharer_shareid=aefb2cf8bbd4980bf3f827f86feb6b04#rd) 
+- 【在B站查看：《人升》2分钟配置坚果云实现云备份】 https://www.bilibili.com/video/BV1Yg411i7uM/?share_source=copy_web&vd_source=141b0b80de90aedb6b7f25458fa6b5d1
+
+- 【在B站查看：《人升》一键导入存档数据（恢复）】 https://www.bilibili.com/video/BV1xP411u7dV/?share_source=copy_web&vd_source=141b0b80de90aedb6b7f25458fa6b5d1
+
+- [在微信公众号查看本文（含坚果云备份的设置视频教程）](https://mp.weixin.qq.com/s?__biz=MzI0OTQ4OTAxMQ==&mid=2247483867&idx=1&sn=d24068b74810d5b91b37c1abda436eca&chksm=e991f2c7dee67bd1ed49e74b3131bf7812c22f2a58a82cdac3c30182665296262a3c86a77b1d&mpshare=1&scene=23&srcid=1205mlIjJmwwyVugMJ7P25jM&sharer_sharetime=1639901809270&sharer_shareid=aefb2cf8bbd4980bf3f827f86feb6b04#rd) 
 
 ## 一、简介
 
+### 1.0 是否支持同步？
+
+- ❌ 服务端直接同步数据（`人升`是离线存储应用）
+- ❌ 增量同步
+- ✔️ 使用自选 WebDAV 云服务/DropBox/Google Drive 进行云存储和同步
+- ✔️ 跨设备**手动全量**同步
+
 ### 1.1 为什么需要配置备份？
 
-由于工具类 APP 性质特殊，一般需要支持本地离线使用，所以数据一般是保存在本地的。
+`人升`属于基于离线存储的工具类应用，支持离线使用，并让你完全掌控数据。**你可以使用任意第三方服务或本地存储进行备份，我们也支持了通用的 WebDAV 云盘协议。**
 
-如果不进行备份的话，在卸载应用、更换手机的情况下，你可能会丢失所有的本地数据，只保留团队动态之类的云端数据。
+这也意味着你需要手动备份数据，不然可能会在卸载应用、更换手机、手机损坏之类的情况下丢失你的数据。目前只有团队、公开动态和会员等数据是云端存储的。
 
 **这跟你直接卸载微信，也会丢失所有聊天记录是一致的。**
 
@@ -20,11 +31,13 @@
 
 <br/>
 
+?> 如果你在大陆境内使用的话，只需要花费数十分钟注册一个坚果云账号，并在 app 内配置，即可**一劳永逸**实现云存储。<br/>如果你拥有海外网络环境，则只需要在 app 内直接授权 Google Drive/Dropbox 即可实现云存储。
+
 《人升》由于种种原因，目前无法实现内置云同步功能：
 
 - **增量同步属于技术壁垒**
 
-  我们目前没有技术，服务器也没有足够的计算和存储资源来实现增量同步
+  我们目前缺少技术，服务器也没有足够的计算和存储资源来实现增量同步。
 
 - **全量同步也需要大量的云存储空间资源**
 
@@ -45,6 +58,7 @@
 - WebDAV 备份
 - 直接导出文件进行备份（默认路径和自定义路径）
 - Dropbox 备份
+- Google Drive 备份
 
 <br />
 
@@ -54,11 +68,15 @@
 
 - 待办事项内容和历史记录
 
-- 商品、金币等所有记录
+- 商品、仓库、金币等所有记录
 
 - 成就解锁记录、自定义成就
 
 - 感想
+
+- 合成
+
+- 自定义属性
 
 - 番茄记录
 
@@ -75,10 +93,11 @@
 | 方法           | 卸载 | 手机损坏                                                  | 自动备份 | 备注                                                         |
 | -------------- | ---- | --------------------------------------------------------- | -------- | ------------------------------------------------------------ |
 | 默认路径备份   | ❌    | ❌                                                         | ❌        | 仅用于非卸载情况下的数据恢复                                 |
-| 自定义路径备份 | ✔️    | ❌（除非手动将文件导向其他设备，或者将文件选择至远程路径） | ❌        | **如果安装了 Google Drive、坚果云 app，也可以在这里实现备份至 Google Drive 或坚果云，实现手动云备份** |
-| 自动备份至`下载`文件夹 | ✔️ | ❌ | ✔️ | 仅适用于Android10及以上设备 |
-| WebDAV 备份     | ✔️    | ✔️                                                         | ✔️        | 需要选择支持 WebDAV 备份的平台或者自部署，推荐使用坚果云       |
-| Dropbox 备份    | ✔️    | ✔️                                                         | ✔️        | 需要一定的网络条件，国内环境可能比较麻烦                     |
+| 自定义路径备份 | ✔️    | ✔️（若将文件导出至外部介质）<br/>❌ （若还是存放在手机中） | ❌        | **如果安装了 Google Drive、坚果云 app，也可以在这里实现备份至 Google Drive 或坚果云，实现手动云备份** |
+| 自动备份至`下载`文件夹 | ✔️ | ❌ | ✔️ | 仅适用于 Android10 及以上设备 |
+| WebDAV 备份     | ✔️    | ✔️                                                         | ✔️        | 需要选择支持 WebDAV 备份的平台或者自部署，推荐使用坚果云<br/>对大文件上传效果一般，建议不超过 10MB<br/>支持自部署 |
+| Dropbox 备份    | ✔️    | ✔️                                                         | ✔️        | 需要一定的网络条件（能够访问Dropbox） <br/>支持大文件上传<br/>支持应用内一键授权 |
+| Google Drive 备份 | ✔️ | ✔️ | ✔️ | 需要一定的网络条件（能够访问谷歌服务）<br/>支持大文件上传<br/>支持应用内一键授权 |
 
 <br />
 
@@ -102,11 +121,20 @@
 >
 > 但国内支持 WebDAV 协议的知名网盘目前只有**坚果云**。
 
+<br/>
+
 ### 2.1 使用方法
 
-#### 2.1.0 视频教程
+#### 2.1.0 视频教程（2分钟完成坚果云配置）
 
-> [公众号里有视频教程](https://mp.weixin.qq.com/s?__biz=MzI0OTQ4OTAxMQ==&mid=2247483867&idx=1&sn=d24068b74810d5b91b37c1abda436eca&chksm=e991f2c7dee67bd1ed49e74b3131bf7812c22f2a58a82cdac3c30182665296262a3c86a77b1d&mpshare=1&scene=23&srcid=1205mlIjJmwwyVugMJ7P25jM&sharer_sharetime=1639901809270&sharer_shareid=aefb2cf8bbd4980bf3f827f86feb6b04#rd)
+> 首先，需要下载并注册《坚果云》app。或者你也可参考下述的网页版操作指引。<br/>
+> 《坚果云》app 仅用于注册和获取配置信息，配置后可以保留用作个人网盘或者卸载，不影响云同步功能。
+
+<iframe src="//player.bilibili.com/player.html?aid=517994865&bvid=BV1Yg411i7uM&cid=899709786&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="80%" height="600"> </iframe>
+
+https://www.bilibili.com/video/BV1Yg411i7uM/
+
+欢迎关注 B 站账号~后续计划更新更多《人升》相关视频。
 
 #### 2.1.1 获取 WebDAV 地址、账号、密码
 
@@ -116,15 +144,23 @@
 
 ##### 2.2.2 手机版操作
 
-1.  移动端安装坚果云 APP（可选：参考下述的电脑版操作，使用浏览器执行桌面版操作）。
+1. 移动端安装坚果云 APP（可选：参考下述的电脑版操作，使用浏览器执行桌面版操作）。
    ![](_media/backup/04.png ': size=50%')
-2.  注册并登录坚果云后，在坚果云的 ` 设置 `-` 第三方应用管理 ` 处，添加应用密码，应用名称可输入 LifeUp。
-    ![](_media/backup/05.png ': size=50%')
-    ![](_media/backup/06.png ': size=50%')
-    ![](_media/backup/07.png ': size=50%')
-3.  添加成功后，你能在该页面看到 ` 服务器地址 `、` 账号 ` 和刚才添加的应用密码等信息。
-    ![](_media/backup/08.png ': size=50%')
-4.  接下来的步骤参考下文**2.2.4 应用配置**。
+
+2. 注册并登录坚果云后，在坚果云的 ` 设置 `-` 第三方应用管理 ` 处，添加应用密码，应用名称可输入 LifeUp。
+   ![](_media/backup/05.png ': size=50%')
+
+	<br/>
+
+   ![](_media/backup/06.png ': size=50%')
+	<br/>
+
+   ![](_media/backup/07.png ': size=50%')
+
+3. 添加成功后，你能在该页面看到 ` 服务器地址 `、` 账号 ` 和刚才添加的应用密码等信息。
+   ![](_media/backup/08.png ': size=50%')
+
+4. 接下来的步骤参考下文**2.2.4 应用配置**。
 
 ##### 2.2.3 电脑版操作
 
@@ -155,11 +191,11 @@
 - 如果你的备份文件体积已经大于 10MB，那么请根据实际情况考虑 ` 忽略媒体文件 ` 或者调整 ` 自动备份间隔 `。
 - **如果备份文件过大，可能导致上传失败。**这时候也可以尝试开启 ` 忽略媒体文件 `。并且可以尝试另行备份媒体文件，不然即便成功也算消耗大量流量。甚至导致坚果云那边流量超额，无法上传。
 
----
+<br/>
 
-## 三、恢复
+## 三、恢复（导入数据）
 
-![](_media/backup/10.png': size=30%')
+![](_media/backup/10.png ': size=30%')
 
 ### 自定义路径
 
@@ -176,16 +212,30 @@
 - ` 文件存储根目录/Download（下载）`
 - ` 文件存储根目录/Download（下载）` 下任意子路径
 
-#### Android 10 及更低版本
+<br/>
+从 QQ/文件管理器 恢复数据的视频教程：
+
+<!-- tabs:start -->
+
+#### **一键从 QQ 或者文件系统导入数据（推荐）**
+
+需要《人升》v1.90.6 版本以上。
+
+<iframe src="//player.bilibili.com/player.html?aid=305504686&bvid=BV1xP411u7dV&cid=904969278&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="80%" height="600"> </iframe>
+
+
+#### **Android 10 及更低版本**
 
 <iframe src="//player.bilibili.com/player.html?aid=380415695&bvid=BV1PZ4y1S7ah&cid=479527125&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="80%" height="600"> </iframe>
 
-#### Android 11 及以上
+#### **Android 11 及以上**
 
 <iframe src="//player.bilibili.com/player.html?aid=250882869&bvid=BV1gv411g7ys&cid=419591550&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="80%" height="600"> </iframe>
 
-### WebDAV/DropBox
+<!-- tabs:end -->
 
-这两种云同步方式，只需要配置好各自的信息后，执行对应的恢复方式即可。
+### WebDAV/Dropbox/Google Drive
 
-当然，特殊情况你也可以去对应的平台下载文件，手动进行本地恢复。
+- 对于 WebDAV 方式，你只需要按照备份的步骤拿回之前的配置信息，即可恢复。
+- 对于 Dropbox、Google Drive 备份方式，直接在应用内授权后，即可恢复。
+- 当然，特殊情况你也可以去对应的平台下载文件，手动进行本地恢复。
